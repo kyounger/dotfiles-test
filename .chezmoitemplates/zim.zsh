@@ -104,28 +104,20 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # ------
 
 #
-# zsh-vi-mode
+# zsh-vim-mode
 #
-
-ZVM_KEYTIMEOUT=0.05
-ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BEAM
-ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
-
-function zvm_after_init() {
-  zvm_bindkey viins '^[[Z' autosuggest-accept
-}
 
 # ------------------
 # Initialize modules
 # ------------------
 
+ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   # Download zimfw script if missing.
-  command mkdir -p ${ZIM_HOME}
   if (( ${+commands[curl]} )); then
-    command curl -fsSL -o ${ZIM_HOME}/zimfw.zsh https://raw.githubusercontent.com/kyounger/zimfw/master/zimfw.zsh
+    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
   else
-    command wget -nv -O ${ZIM_HOME}/zimfw.zsh https://raw.githubusercontent.com/kyounger/zimfw/master/zimfw.zsh
+    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
   fi
 fi
 if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
