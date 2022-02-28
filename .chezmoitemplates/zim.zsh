@@ -104,8 +104,16 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # ------
 
 #
-# zsh-vim-mode
+# zsh-vi-mode
 #
+
+ZVM_KEYTIMEOUT=0.05
+ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BEAM
+ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
+
+function zvm_after_init() {
+  zvm_bindkey viins '^[[Z' autosuggest-accept
+}
 
 # ------------------
 # Initialize modules
