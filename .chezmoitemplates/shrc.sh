@@ -1,3 +1,5 @@
+# Common settings across different shells (bash/zsh)
+
 {{ if eq .os "darwin" -}}
   if ! command -v nvim &> /dev/null; then
     export EDITOR=/usr/bin/vim
@@ -14,7 +16,6 @@
     #export EDITOR=/usr/local/bin/nvim
   fi
 {{ end -}}
-
 export VISUAL="$EDITOR"
 
 #more aliases here
@@ -25,6 +26,7 @@ else
   alias vi='vim'
 fi
 
+export LANG=en_US.UTF-8
 
 # Terminal color
 export CLICOLOR=1
@@ -42,8 +44,8 @@ elif [[ "$(uname)" == "Linux" ]]; then
   alias ls='ls --color'
 fi
 
-# If $LESS is unset, Git sets it to FRX. I don't want F or X.
-export LESS='R'
+export PAGER="less -RF"
+export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case --quit-if-one-screen --RAW-CONTROL-CHARS'
 
 # less color
 export LESS_TERMCAP_mb=$'\E[01;31m'    # begin blink

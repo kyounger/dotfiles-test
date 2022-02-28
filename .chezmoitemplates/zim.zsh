@@ -34,7 +34,7 @@ WORDCHARS=${WORDCHARS//[\/]}
 # My config
 #
 
-KEYTIMEOUT=1
+KEYTIMEOUT=30
 
 # -----------------
 # Zim configuration
