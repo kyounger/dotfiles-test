@@ -1,4 +1,10 @@
-if [[ "$(uname)" == "Linux" ]]; then
+{{ if eq .os "darwin" -}}
+  if ! command -v nvim &> /dev/null; then
+    export EDITOR=/usr/bin/vim
+  else
+    export EDITOR=/usr/local/bin/nvim
+  fi
+{{ else if eq .os "linux" -}}
   if ! command -v nvim &> /dev/null; then
     export EDITOR=/usr/bin/vim
   else
@@ -7,40 +13,18 @@ if [[ "$(uname)" == "Linux" ]]; then
     # If Neovim is installed from source:
     #export EDITOR=/usr/local/bin/nvim
   fi
-elif [[ "$(uname)" == "Darwin" ]]; then
-  if ! command -v nvim &> /dev/null; then
-    export EDITOR=/usr/local/bin/vim
-  else
-    export EDITOR=/run/current-system/sw/bin/nvim
-  fi
-fi
+{{ end -}}
+
 export VISUAL="$EDITOR"
 
+#more aliases here
 alias sudo='sudo '
-alias la='ls -A'
-alias ll='ls -ltAh'
-alias pd='pushd'
-alias pdw='pushd .'
-alias po='popd'
-alias gst='git status'
-alias glg='git log --all --graph --decorate'
 if command -v nvim &> /dev/null; then
   alias vi='nvim'
 else
   alias vi='vim'
 fi
-alias kk='kitty +kitten'
-alias magit='emacsclient -n -e "(magit-status)"'
 
-# Clear screen
-cls () {
-  if [[ "$TERM" == "tmux-256color" && -n "TMUX" ]]; then
-    clear && tmux clear-history 
-  else
-    # This is equivalent to clear && printf '\e[3J'
-    printf '\33c\e[3J'
-  fi
-}
 
 # Terminal color
 export CLICOLOR=1
@@ -75,36 +59,12 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export MANPAGER='less -s -M +Gg'
 
 {{ if eq .os "darwin" -}}
-alias cafe="caffeinate -disu &"
-alias bup="brew update && brew upgrade"
-alias lacie="smartctl -a disk3 | grep Temperature"
-alias yd="youtube-dl"
 alias cm="chezmoi"
 
-export PATH="/usr/local/sbin:$PATH"
-
-export PATH="/usr/local/opt/jpeg-turbo/bin:$PATH"
-
-eval "$(pyenv init - --no-rehash)"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PYENV_HOOK_PATH="$HOME/.config/pyenv.d"
-
-eval "$(pyenv virtualenv-init -)"
-
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-
-if [ -n "$BASH_VERSION" ]; then
-  eval "$(thefuck --alias)"
-fi
-
-export PATH="$HOME/.emacs.d/bin:$PATH"
-
-export PATH="/Library/TeX/texbin:$PATH"
-
 export HOMEBREW_BUNDLE_FILE="$HOME/.config/Brewfile"
+
 {{ else if eq .os "linux" -}}
+
 alias cm="$HOME/bin/chezmoi"
 
 {{ end -}}

@@ -123,9 +123,9 @@ if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   # Download zimfw script if missing.
   command mkdir -p ${ZIM_HOME}
   if (( ${+commands[curl]} )); then
-    command curl -fsSL -o ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+    command curl -fsSL -o ${ZIM_HOME}/zimfw.zsh https://raw.githubusercontent.com/kyounger/zimfw/master/zimfw.zsh
   else
-    command wget -nv -O ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+    command wget -nv -O ${ZIM_HOME}/zimfw.zsh https://raw.githubusercontent.com/kyounger/zimfw/master/zimfw.zsh
   fi
 fi
 if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then

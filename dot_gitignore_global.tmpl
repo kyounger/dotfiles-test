@@ -56,11 +56,9 @@ tags
 {{ if eq .chezmoi.os "darwin" -}}
 # spellfile binaries
 *.add.spl
+.DS_Store
 {{ end -}}
 
-### Python
 
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-.python-version
+# legacy stuff
+.svn

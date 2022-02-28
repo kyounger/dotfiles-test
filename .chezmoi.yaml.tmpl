@@ -1,0 +1,5 @@
+{{- $vim_flag := promptString "System good for N/Vim complete config?" "good" -}}
+{{- $variant_flag := promptString "Which config variant? (1,2)" "1" -}}
+data:
+    vim_flag: {{ $vim_flag | quote }}
+    variant_flag: {{ $variant_flag | quote }}

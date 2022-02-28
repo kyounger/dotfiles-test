@@ -1,10 +1,19 @@
 [".vim/pack/plugins/opt/chezmoi.vim"]
     type = "archive"
-    url = "https://github.com/alker0/chezmoi.vim/archive/main.tar.gz"
+    url = "https://github.com/kyounger/chezmoi.vim/archive/main.tar.gz"
     exact = true
     stripComponents = 1
 [".config/nvim/pack/plugins/opt/chezmoi.vim"]
     type = "archive"
-    url = "https://github.com/alker0/chezmoi.vim/archive/main.tar.gz"
+    url = "https://github.com/kyounger/chezmoi.vim/archive/main.tar.gz"
     exact = true
     stripComponents = 1
+[".tmux/plugins/tmux-sensible"]
+    type = "git-repo"
+    url = "https://github.com/kyounger/tmux-sensible"
+[".tmux/plugins/tmux-prefix-highlight"]
+    type = "git-repo"
+    url = "https://github.com/kyounger/tmux-prefix-highlight"
+[".tmux/plugins/red.tmuxtheme"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/kyounger/tmux-themepack/master/powerline/block/red.tmuxtheme"
