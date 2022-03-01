@@ -12,10 +12,6 @@
 #
 
 # Remove older command from the history if a duplicate is to be added.
-setopt HIST_IGNORE_ALL_DUPS
-HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"       # The path to the history file.
-HISTSIZE=290000                   # The maximum number of events to save in the internal history.
-SAVEHIST=290000                   # The maximum number of events to save in the history file.
 
 #
 # Input/output
@@ -36,8 +32,6 @@ WORDCHARS=${WORDCHARS//[\/]}
 #
 # My config
 #
-
-KEYTIMEOUT=30
 
 function bar() { echo -n "|" }
 function rparen() { echo -n ")" }
@@ -154,6 +148,11 @@ source ${ZIM_HOME}/init.zsh
 # ------------------------------
 # Post-init module configuration
 # ------------------------------
+#
+setopt HIST_IGNORE_ALL_DUPS
+HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"       # The path to the history file.
+HISTSIZE=290000                   # The maximum number of events to save in the internal history.
+SAVEHIST=290000                   # The maximum number of events to save in the history file.
 
 #
 # zsh-history-substring-search
