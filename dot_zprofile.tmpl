@@ -1,8 +1,1 @@
-{{ if eq .chezmoi.os "darwin" -}}
-export EDITOR=/usr/local/bin/nvim
-export SHELL=/usr/local/bin/zsh
-{{ end -}}
-
-export VISUAL="$EDITOR"
-
 {{ template "profile.sh" dict "os" .chezmoi.os -}}

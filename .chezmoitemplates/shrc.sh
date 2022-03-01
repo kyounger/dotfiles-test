@@ -19,10 +19,19 @@
 export VISUAL="$EDITOR"
 
 {{ if eq .os "darwin" -}}
-  export MY_BREW_PREFIX=/usr/local
+  #default for x86_64 architectures on mac
+  export HOMEBREW_PREFIX="/usr/local";
+
+  #override with proper homebrew prefix for m1 macs
   if [[ "$(uname -m)" == "arm64" ]]; then
-    export MY_BREW_PREFIX=/opt/homebrew
+    export HOMEBREW_PREFIX="/opt/homebrew";
   fi
+
+  export HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar";
+  export HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew";
+  export PATH="${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/sbin${PATH+:$PATH}";
+  export MANPATH="${HOMEBREW_PREFIX}/share/man${MANPATH+:$MANPATH}:";
+  export INFOPATH="${HOMEBREW_PREFIX}/share/info:${INFOPATH:-}";
 {{ end -}}
 
 #more aliases here
