@@ -18,6 +18,13 @@
 {{ end -}}
 export VISUAL="$EDITOR"
 
+{{ if eq .os "darwin" -}}
+  export MY_BREW_PREFIX=/usr/local
+  if [[ "$(uname -m)" == "arm64" ]]; then
+    export MY_BREW_PREFIX=/opt/homebrew
+  fi
+{{ end -}}
+
 #more aliases here
 alias sudo='sudo '
 if command -v nvim &> /dev/null; then
@@ -31,7 +38,8 @@ export LANG=en_US.UTF-8
 # Terminal color
 export CLICOLOR=1
 export COLORTERM=truecolor
-export LSCOLORS=GxFxCxDxBxegedabagaced
+export LSCOLORS=DxfxcxdxbxGxDxabagacad
+export LS_COLORS='di=93:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
 if [[ "$(uname)" == "Darwin" ]]; then
   # If using native BSD utils
   #alias ls='ls -G'
