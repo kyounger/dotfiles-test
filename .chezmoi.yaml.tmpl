@@ -1,5 +1,11 @@
 {{- $vim_flag := promptString "System good for N/Vim complete config?" "good" -}}
 {{- $variant_flag := promptString "Which config variant? (1,2)" "1" -}}
+{{- $git_username := promptString "Git username:" "" -}}
+{{- $git_email := promptString "Git email:" "" -}}
+{{- $git_signingkey := promptString "Git GPG signing key:" "" -}}
 data:
     vim_flag: {{ $vim_flag | quote }}
     variant_flag: {{ $variant_flag | quote }}
+    git_username: {{ $git_username | quote }}
+    git_email: {{ $git_email | quote }}
+    git_signingkey: {{ $git_signingkey | quote }}
