@@ -108,7 +108,6 @@ brew libvterm
 brew little-cms2
 brew lua
 brew lua@5.3
-brew luajit
 brew luarocks
 brew mad
 brew mas
@@ -192,14 +191,11 @@ brew yq
 brew yt-dlp
 brew zsh
 
-tap caskroom/cask
-tap caskroom/drivers
-tap caskroom/versions
+tap homebrew/cask
 tap hashicorp/tap
 
 # Other Cask applications
 cask appcleaner
-cask balsamiq-mockups
 cask bartender
 cask bettertouchtool
 cask carbon-copy-cloner
@@ -211,7 +207,6 @@ cask hammerspoon
 cask intellij-idea
 cask iterm2
 cask karabiner-elements
-cask macvim
 cask obs
 cask qlmarkdown
 cask quicklook-csv
