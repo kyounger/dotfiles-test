@@ -1,4 +1,3 @@
-
 # tap repositories and their packages
 tap kyounger/file
 brew brew-file
@@ -48,7 +47,7 @@ brew gmp
 brew gnu-sed
 brew gnu-tar
 brew gnutls
-brew gpg
+brew gnupg
 brew gron
 brew hashcat
 brew helm
@@ -131,7 +130,7 @@ brew opa
 brew openjdk
 brew openjdk@11
 brew openjpeg
-brew openssl
+brew openssl@3
 brew opus
 brew p11-kit
 brew pcre
@@ -149,7 +148,7 @@ brew python@3.9
 brew readline
 brew reattach-to-user-namespace
 brew redis
-brew rg
+brew ripgrep
 brew rsync
 brew sdl2
 brew sha3sum
