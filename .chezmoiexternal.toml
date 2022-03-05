@@ -20,3 +20,4 @@
 [".macos"]
     type = "file"
     url = "https://raw.githubusercontent.com/kyounger/mathiasbynens-dotfiles/main/.macos"
+    executable = true
