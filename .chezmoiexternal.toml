@@ -17,3 +17,6 @@
 [".tmux/plugins/red.tmuxtheme"]
     type = "file"
     url = "https://raw.githubusercontent.com/kyounger/tmux-themepack/master/powerline/block/red.tmuxtheme"
+[".macos"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/kyounger/mathiasbynens-dotfiles/main/.macos"
