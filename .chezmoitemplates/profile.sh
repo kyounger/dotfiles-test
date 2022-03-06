@@ -1,3 +1,5 @@
+umask 077
+
 {{ if eq .os "darwin" -}}
 
 {{ else if eq .os "linux" -}}
