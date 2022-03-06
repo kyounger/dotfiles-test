@@ -40,7 +40,9 @@ call plug#end()
 
 " my helper function
 function! IfPlugin(plugin_name)
-  return has_key(g:plugs, a:plugin_name) && stridx(&rtp, g:plugs[a:plugin_name].dir)
+  let l:plugin_exists = 0
+  silent! l:plugin_exists = has_key(g:plugs, a:plugin_name) && stridx(&rtp, g:plugs[a:plugin_name].dir)
+  return l:plugin_exists
 endfunction
 
 " ]]]
