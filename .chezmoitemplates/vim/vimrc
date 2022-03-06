@@ -564,7 +564,7 @@ endfunction
 
     " ]]]
 " ]]]
-{{ if eq .vim_flag "good" }}
+{{ if eq .vim_flag "good" -}}
 " Plugin settings -------------------------------------------------------- [[[
     " vim-indexed-search: [[[
         if IfPlugin("vim-indexed-search")
@@ -630,7 +630,7 @@ endfunction
         endif
     " ]]]
 " ]]]
-{{ end }}
+{{ end -}}
 " Environment ------------------------------------------------------------ [[[
 
     set mouse=a
