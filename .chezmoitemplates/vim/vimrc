@@ -4,7 +4,7 @@ if &compatible
   set nocompatible
 endif
 
-" Plugin Manager --------------------------------------------------------- {{{
+" Plugin Manager --------------------------------------------------------- [[[
 
 {{ if eq .vim_flag "good" }}
 call plug#begin('~/.cache/nvim/plugged')
@@ -43,10 +43,10 @@ function! IfPlugin(plugin_name)
   return has_key(g:plugs, a:plugin_name) && stridx(&rtp, g:plugs[a:plugin_name].dir)
 endfunction
 
-" }}}
-" Settings and Mappings -------------------------------------------------- {{{
+" ]]]
+" Settings and Mappings -------------------------------------------------- [[[
 
-    " Sensible Defaults: {{{
+    " Sensible Defaults: [[[
 
         set noexrc
         set secure
@@ -132,8 +132,8 @@ endfunction
 
         set virtualedit+=block
 
-    " }}}
-    " Cursorline: {{{
+    " ]]]
+    " Cursorline: [[[
 
         " Only show cursorline in the current window and in normal mode.
         augroup cline
@@ -142,8 +142,8 @@ endfunction
             au WinEnter,InsertLeave * set cursorline
         augroup END
 
-    " }}}
-    " Trailing whitespace: {{{
+    " ]]]
+    " Trailing whitespace: [[[
         " Only shown when not in insert mode so I don't go insane.
         augroup trailing
             au!
@@ -157,8 +157,8 @@ endfunction
             call setpos('.', l:save_cursor)
         endfun
 
-    " }}}
-    " Wildmenu completion: {{{
+    " ]]]
+    " Wildmenu completion: [[[
 
         set wildmenu
         set wildmode=longest:list,full
@@ -182,8 +182,8 @@ endfunction
         set wildignore+=classes
         set wildignore+=lib
 
-    " }}}
-    " Line Return: {{{
+    " ]]]
+    " Line Return: [[[
 
         " Make sure Vim returns to the same line when you reopen a file.
         augroup line_return
@@ -194,14 +194,14 @@ endfunction
                 \ endif
         augroup END
 
-    " }}}
-    " Leader: {{{
+    " ]]]
+    " Leader: [[[
 
         let mapleader = ","
         let maplocalleader = ","
 
-    " }}}
-    " Tabs, Spaces, Wrapping: {{{
+    " ]]]
+    " Tabs, Spaces, Wrapping: [[[
 
         set tabstop=2
         set shiftwidth=2
@@ -218,8 +218,8 @@ endfunction
         nnoremap <leader>w :set nowrap! nolinebreak! nolist<cr>
 
 
-    " }}}
-    " Color scheme {{{
+    " ]]]
+    " Color scheme [[[
         let g:airline_theme='ubaryd'
 
         syntax on
@@ -232,15 +232,15 @@ endfunction
         " Highlight VCS conflict markers
         match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-    " }}}
-    " NoOp: {{{
+    " ]]]
+    " NoOp: [[[
 
         noremap  <F1> <nop>
         inoremap <F1> <nop>
         nnoremap Q <nop>
 
-    " }}}
-    " Editing: {{{
+    " ]]]
+    " Editing: [[[
         " Clean trailing whitespace
         nnoremap <leader><leader>w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
@@ -278,8 +278,8 @@ endfunction
         "BEAST MODE. Allow . and @@ to execute once for each line of a visual selection
         vnoremap . :normal .<CR>
         vnoremap @@ :normal @@
-    " }}}
-    " Command Mode Mapping: {{{
+    " ]]]
+    " Command Mode Mapping: [[[
         " Insert the directory of the current buffer in command line mode
         cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
@@ -289,8 +289,8 @@ endfunction
 
         " Sudo to write
         cnoremap w!! w !sudo tee % >/dev/null
-    " }}}
-    " Selection Mappings: {{{
+    " ]]]
+    " Selection Mappings: [[[
         " Select (charwise) the contents of the current line, excluding indentation.
         " Great for pasting Python lines into REPLs.
         nnoremap vv ^vg_
@@ -304,8 +304,8 @@ endfunction
         " Reselect visual block after indent/outdent
         vnoremap < <gv
         vnoremap > >gv
-    " }}}
-    " Navigation: {{{
+    " ]]]
+    " Navigation: [[[
         " mash keys; exit insert fast.
         inoremap jj <ESC>
         inoremap kk <ESC>
@@ -351,8 +351,8 @@ endfunction
 
         "Matching
         runtime macros/matchit.vim
-    " }}}
-    " Completions {{{
+    " ]]]
+    " Completions [[[
 
         " Ctrl-Space for completions
         inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
@@ -366,8 +366,8 @@ endfunction
         inoremap <c-f> <c-x><c-f>
         inoremap <c-]> <c-x><c-]>
 
-    " }}}
-    " Copy & Paste {{{
+    " ]]]
+    " Copy & Paste [[[
         " clearly
         au InsertLeave * set nopaste
 
@@ -382,8 +382,8 @@ endfunction
         noremap <leader>p "0p
         noremap <leader>P "0P
 
-    "" }}}
-    " Misc: {{{
+    "" ]]]
+    " Misc: [[[
         nnoremap <F3> :e $MYVIMRC<cr>
 
         " Toggle "keep current line in the center of the screen" mode
@@ -392,8 +392,8 @@ endfunction
         "I hate typing SNAPSHOT
         nnoremap ,,s i-SNAPSHOT<esc>
 
-    " }}}
-    " Folding: {{{
+    " ]]]
+    " Folding: [[[
         set foldlevelstart=20
 
         " Space to toggle folds.
@@ -415,7 +415,7 @@ endfunction
         " I use :sus for the rare times I want to actually background Vim.
         nnoremap <c-z> mzzMzvzz10<c-e>`z:Pulse<cr>
 
-        function! MyFoldText() " {{{
+        function! MyFoldText() " [[[
             let line = getline(v:foldstart)
 
             let nucolwidth = &fdc + &number * &numberwidth
@@ -429,7 +429,7 @@ endfunction
             let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
             let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
             return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-        endfunction " }}}
+        endfunction " ]]]
         set foldtext=MyFoldText()
 
         function! BetterIndentFolding()
@@ -440,8 +440,8 @@ endfunction
             highlight Folded ctermfg=DarkGreen ctermbg=Black
         endfunction
 
-    " }}}
-    " Searching {{{
+    " ]]]
+    " Searching [[[
 
         nnoremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 
@@ -462,7 +462,7 @@ endfunction
             nnoremap N Nzzzv
         end
 
-        function! HiInterestingWord(n) " {{{
+        function! HiInterestingWord(n) " [[[
             " Save our location.
             normal! mz
             " Yank the current word into the z register.
@@ -495,20 +495,20 @@ endfunction
         endfunction
         nnoremap <silent> • :call HiInterestingWord(1)<cr>
 
-    "}}}
+    "]]]
 
-    " }}}
-" }}}
-" Filetype-specific ------------------------------------------------------ {{{
-    " helmfile {{{
+    " ]]]
+" ]]]
+" Filetype-specific ------------------------------------------------------ [[[
+    " helmfile [[[
 
         augroup ft_helmfile
             au!
             au BufNewFile,BufRead helmfile.yaml setlocal filetype=helm
         augroup END
 
-    " }}}
-    " CSS and LessCSS {{{
+    " ]]]
+    " CSS and LessCSS [[[
 
         augroup ft_css
             au!
@@ -525,8 +525,8 @@ endfunction
             au BufNewFile,BufRead *.less,*.css inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
         augroup END
 
-    " }}}
-    " Java {{{
+    " ]]]
+    " Java [[[
 
         augroup ft_java
             au!
@@ -535,55 +535,56 @@ endfunction
             au FileType java setlocal foldmarker={,}
         augroup END
 
-    " }}}
-    " Python {{{
+    " ]]]
+    " Python [[[
 
         augroup ft_python
             au!
             au Filetype python setlocal foldmethod=syntax
         augroup END
 
-    " }}}
-    " Ruby {{{
+    " ]]]
+    " Ruby [[[
 
         augroup ft_ruby
             au!
             au Filetype ruby setlocal foldmethod=syntax
         augroup END
 
-    " }}}
-    " Vim {{{
+    " ]]]
+    " Vim [[[
 
         augroup ft_vim
             au!
             au FileType vim setlocal foldmethod=marker
+            au FileType vim setlocal foldmarker=[[[,]]]
             au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
         augroup END
 
-    " }}}
-" }}}
-" Plugin settings -------------------------------------------------------- {{{
-    " vim-indexed-search: {{{
+    " ]]]
+" ]]]
+" Plugin settings -------------------------------------------------------- [[[
+    " vim-indexed-search: [[[
         if IfPlugin("vim-indexed-search")
           let g:indexed_search_mappings = 0
           noremap <silent> <Plug>(slash-after) :<C-u>ShowSearchIndex<CR>
           xunmap <Plug>(slash-after)
         endif
-    " }}}
-    " vim-expand-region: {{{
+    " ]]]
+    " vim-expand-region: [[[
         if IfPlugin("vim-expand-region")
           nmap <space> <Plug>(expand_region_expand)
           vmap <space> <Plug>(expand_region_expand)
           nmap _ <Plug>(expand_region_shrink)
           vmap _ <Plug>(expand_region_shrink)
         endif
-    " }}}
-    " vim-sneak: {{{
+    " ]]]
+    " vim-sneak: [[[
         if IfPlugin("vim-sneak")
           let g:sneak#label = 1
         endif
-    " }}}
-    " COC: {{{
+    " ]]]
+    " COC: [[[
         if IfPlugin("coc")
           "" Remap for do codeAction of selected region
           function! s:cocActionsOpenFromSelected(type) abort
@@ -592,8 +593,8 @@ endfunction
           xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
           nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
         endif
-    " }}}
-    " GitGutter {{{
+    " ]]]
+    " GitGutter [[[
         if IfPlugin('vim-gitgutter')
             nnoremap <F4> :GitGutterToggle<cr>
             nmap <Leader>hn <Plug>(GitGutterNextHunk)
@@ -601,8 +602,8 @@ endfunction
             nmap <Leader>hs <Plug>(GitGutterStageHunk)
             nmap <Leader>hu <Plug>(GitGutterUndoHunk)
         endif
-    " }}}
-    " Fugitive {{{
+    " ]]]
+    " Fugitive [[[
         if IfPlugin("vim-fugitive")
             augroup ft_fugitive
                 au!
@@ -610,24 +611,24 @@ endfunction
                 au BufNewFile,BufRead .git/index setlocal nolist
             augroup END
         end
-    " }}}
-    " Markdown {{{
+    " ]]]
+    " Markdown [[[
         if IfPlugin("vim-markdown")
             let g:vim_markdown_emphasis_multiline = 0
             let g:vim_markdown_no_default_key_mappings = 1
             let g:vim_markdown_folding_style_pythonic = 1
         end
-    " }}}
-    " Yankstack {{{
+    " ]]]
+    " Yankstack [[[
         if IfPlugin("vim-yankstack")
             nmap π <Plug>yankstack_substitute_older_paste
             nmap ∏ <Plug>yankstack_substitute_newer_paste
             imap π <Plug>yankstack_substitute_older_paste
             imap ∏ <Plug>yankstack_substitute_newer_paste
         endif
-    " }}}
-" }}}
-" Environment ------------------------------------------------------------ {{{
+    " ]]]
+" ]]]
+" Environment ------------------------------------------------------------ [[[
 
     set mouse=a
 
@@ -664,8 +665,8 @@ endfunction
     " Resize splits when the window is resized
     au VimResized * :wincmd =
 
-" }}}
-" Backups and other meta persistence: {{{
+" ]]]
+" Backups and other meta persistence: [[[
 
     set noundofile
     set nobackup
@@ -695,5 +696,5 @@ endfunction
         call mkdir(expand(&directory), "p")
     endif
 
-" }}}
+" ]]]
 
