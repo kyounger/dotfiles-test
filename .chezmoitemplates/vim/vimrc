@@ -4,9 +4,8 @@ if &compatible
   set nocompatible
 endif
 
-" Plugin Manager --------------------------------------------------------- [[[
-
 {{ if eq .vim_flag "good" }}
+" Plugin Manager --------------------------------------------------------- [[[
 call plug#begin('~/.cache/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go', { 'tag': '*' }
@@ -36,7 +35,6 @@ Plug 'mrk21/yaml-vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 call plug#end()
-{{ end }}
 
 " my helper function
 function! IfPlugin(plugin_name)
@@ -44,6 +42,8 @@ function! IfPlugin(plugin_name)
   silent! l:plugin_exists = has_key(g:plugs, a:plugin_name) && stridx(&rtp, g:plugs[a:plugin_name].dir)
   return l:plugin_exists
 endfunction
+
+{{ end }}
 
 " ]]]
 " Settings and Mappings -------------------------------------------------- [[[
@@ -565,6 +565,7 @@ endfunction
 
     " ]]]
 " ]]]
+{{ if eq .vim_flag "good" }}
 " Plugin settings -------------------------------------------------------- [[[
     " vim-indexed-search: [[[
         if IfPlugin("vim-indexed-search")
@@ -630,6 +631,7 @@ endfunction
         endif
     " ]]]
 " ]]]
+{{ end }}
 " Environment ------------------------------------------------------------ [[[
 
     set mouse=a
