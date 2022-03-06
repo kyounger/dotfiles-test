@@ -625,6 +625,7 @@ endfunction
             au Filetype less,css setlocal foldmarker={,}
             au Filetype less,css setlocal omnifunc=csscomplete#CompleteCSS
             au Filetype less,css setlocal iskeyword+=-
+            au Filetype less,css setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
             " Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
             " positioned inside of them AND the following code doesn't get unfolded.
@@ -638,6 +639,7 @@ endfunction
             au!
             au FileType java setlocal foldmethod=marker
             au FileType java setlocal foldmarker={,}
+            au Filetype java setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
         augroup END
 
     " ]]]
@@ -646,6 +648,7 @@ endfunction
         augroup ft_python
             au!
             au Filetype python setlocal foldmethod=syntax
+            au Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
         augroup END
 
     " ]]]
@@ -654,6 +657,7 @@ endfunction
         augroup ft_ruby
             au!
             au Filetype ruby setlocal foldmethod=syntax
+            au Filetype ruby setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
         augroup END
 
     " ]]]
@@ -663,6 +667,7 @@ endfunction
             au!
             au FileType vim setlocal foldmethod=marker
             au FileType vim setlocal foldmarker=[[[,]]]
+            au FileType vim setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
             au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
         augroup END
 
@@ -673,6 +678,33 @@ endfunction
             au!
             au FileType yaml setlocal foldmethod=indent
             au FileType yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+        augroup END
+
+    " ]]]
+    " Markdown [[[
+
+        augroup ft_markdown
+            au!
+            au FileType markdown setlocal foldmethod=indent
+            au FileType markdown setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+        augroup END
+
+    " ]]]
+    " JSON [[[
+
+        augroup ft_json
+            au!
+            au FileType json setlocal foldmethod=syntax
+            au FileType json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+        augroup END
+
+    " ]]]
+    " Zsh [[[
+
+        augroup ft_zsh
+            au!
+            au FileType zsh setlocal foldmethod=indent
+            au FileType zsh setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
         augroup END
 
     " ]]]
