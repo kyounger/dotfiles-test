@@ -65,14 +65,3 @@ function! theme#MacBackground()
   "highlight Comment cterm=italic gui=italic
 endfunction
 
-" MacGUIBackground(): change MacVim gVim colour scheme automatically
-function! theme#MacGUIBackground()
-  if v:os_appearance == 1
-    call theme#Colorscheme("dark")
-  else
-    call theme#Colorscheme("light")
-  endif
-  "call airline#extensions#tabline#buffers#invalidate()
-  "AirlineRefresh
-  "highlight Comment cterm=italic gui=italic
-endfunction

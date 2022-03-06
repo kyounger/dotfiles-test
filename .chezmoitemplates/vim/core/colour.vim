@@ -1,5 +1,5 @@
 syntax enable
-colorscheme slate
+colorscheme focuspoint
 highlight Normal ctermbg=235
 highlight StatusLine ctermfg=253
 highlight StatusLineNC ctermfg=243
