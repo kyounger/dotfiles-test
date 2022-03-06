@@ -4,7 +4,7 @@ if &compatible
   set nocompatible
 endif
 
-" Plugins (if any) --------------------------------------------------------- [[[
+" Plugins (if any) ------------------------------------------------------- [[[
 {{ if eq .vim_flag "good" }}
 call plug#begin('~/.cache/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
