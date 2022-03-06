@@ -669,7 +669,7 @@ endfunction
     au VimResized * :wincmd =
 
 " ]]]
-" Backups and other meta persistence: [[[
+" Backups and other meta persistence: ------------------------------------ [[[
 
     set noundofile
     set nobackup
