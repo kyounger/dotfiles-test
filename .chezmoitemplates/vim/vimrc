@@ -672,7 +672,7 @@ endfunction
         augroup ft_yaml
             au!
             au FileType yaml setlocal foldmethod=indent
-            au FileType yaml setlocal expandtab tabstop=3 shiftwidth=3 softtabstop=3
+            au FileType yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
         augroup END
 
     " ]]]
