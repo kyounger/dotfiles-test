@@ -78,12 +78,15 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export MANPAGER='less -s -M +Gg'
 
 {{ if eq .os "darwin" -}}
-alias cm="chezmoi"
 
-export HOMEBREW_BUNDLE_FILE="$HOME/.config/Brewfile"
+alias cm="chezmoi"
 
 {{ else if eq .os "linux" -}}
 
 alias cm="$HOME/bin/chezmoi"
 
 {{ end -}}
+
+#My aliases
+{{ template "aliases.sh" }}
+
