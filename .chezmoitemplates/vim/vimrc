@@ -500,70 +500,6 @@ endfunction
 
     " ]]]
 " ]]]
-" Filetype-specific ------------------------------------------------------ [[[
-    " helmfile [[[
-
-        augroup ft_helmfile
-            au!
-            au BufNewFile,BufRead helmfile.yaml setlocal filetype=helm
-        augroup END
-
-    " ]]]
-    " CSS and LessCSS [[[
-
-        augroup ft_css
-            au!
-
-            au BufNewFile,BufRead *.less setlocal filetype=less
-
-            au Filetype less,css setlocal foldmethod=marker
-            au Filetype less,css setlocal foldmarker={,}
-            au Filetype less,css setlocal omnifunc=csscomplete#CompleteCSS
-            au Filetype less,css setlocal iskeyword+=-
-
-            " Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
-            " positioned inside of them AND the following code doesn't get unfolded.
-            au BufNewFile,BufRead *.less,*.css inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
-        augroup END
-
-    " ]]]
-    " Java [[[
-
-        augroup ft_java
-            au!
-
-            au FileType java setlocal foldmethod=marker
-            au FileType java setlocal foldmarker={,}
-        augroup END
-
-    " ]]]
-    " Python [[[
-
-        augroup ft_python
-            au!
-            au Filetype python setlocal foldmethod=syntax
-        augroup END
-
-    " ]]]
-    " Ruby [[[
-
-        augroup ft_ruby
-            au!
-            au Filetype ruby setlocal foldmethod=syntax
-        augroup END
-
-    " ]]]
-    " Vim [[[
-
-        augroup ft_vim
-            au!
-            au FileType vim setlocal foldmethod=marker
-            au FileType vim setlocal foldmarker=[[[,]]]
-            au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
-        augroup END
-
-    " ]]]
-" ]]]
 {{ if eq .vim_flag "good" -}}
 " Plugin settings -------------------------------------------------------- [[[
     " vim-indexed-search: [[[
@@ -668,6 +604,78 @@ endfunction
     " Resize splits when the window is resized
     au VimResized * :wincmd =
 
+" ]]]
+" Filetype-specific ------------------------------------------------------ [[[
+    " helmfile [[[
+
+        augroup ft_helmfile
+            au!
+            au BufNewFile,BufRead helmfile.yaml setlocal filetype=helm
+        augroup END
+
+    " ]]]
+    " CSS and LessCSS [[[
+
+        augroup ft_css
+            au!
+
+            au BufNewFile,BufRead *.less setlocal filetype=less
+
+            au Filetype less,css setlocal foldmethod=marker
+            au Filetype less,css setlocal foldmarker={,}
+            au Filetype less,css setlocal omnifunc=csscomplete#CompleteCSS
+            au Filetype less,css setlocal iskeyword+=-
+
+            " Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
+            " positioned inside of them AND the following code doesn't get unfolded.
+            au BufNewFile,BufRead *.less,*.css inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
+        augroup END
+
+    " ]]]
+    " Java [[[
+
+        augroup ft_java
+            au!
+            au FileType java setlocal foldmethod=marker
+            au FileType java setlocal foldmarker={,}
+        augroup END
+
+    " ]]]
+    " Python [[[
+
+        augroup ft_python
+            au!
+            au Filetype python setlocal foldmethod=syntax
+        augroup END
+
+    " ]]]
+    " Ruby [[[
+
+        augroup ft_ruby
+            au!
+            au Filetype ruby setlocal foldmethod=syntax
+        augroup END
+
+    " ]]]
+    " Vim [[[
+
+        augroup ft_vim
+            au!
+            au FileType vim setlocal foldmethod=marker
+            au FileType vim setlocal foldmarker=[[[,]]]
+            au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
+        augroup END
+
+    " ]]]
+    " YAML [[[
+
+        augroup ft_yaml
+            au!
+            au FileType yaml setlocal foldmethod=indent
+            au FileType yaml setlocal expandtab tabstop=3 shiftwidth=3 softtabstop=3
+        augroup END
+
+    " ]]]
 " ]]]
 " Backups and other meta persistence: ------------------------------------ [[[
 
