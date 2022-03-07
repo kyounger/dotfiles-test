@@ -1,22 +1,12 @@
 # Common settings across different shells (bash/zsh)
 
-{{ if eq .os "darwin" -}}
-  if ! command -v nvim &> /dev/null; then
-    export EDITOR=/usr/bin/vim
-  else
-    export EDITOR=/usr/local/bin/nvim
-  fi
-{{ else if eq .os "linux" -}}
-  if ! command -v nvim &> /dev/null; then
-    export EDITOR=/usr/bin/vim
-  else
-    # If Neovim is installed with package manager:
-    export EDITOR=/usr/bin/nvim
-    # If Neovim is installed from source:
-    #export EDITOR=/usr/local/bin/nvim
-  fi
-{{ end -}}
+if ! command -v nvim &> /dev/null; then
+  export EDITOR=vim
+else
+  export EDITOR=nvim
+fi
 export VISUAL="$EDITOR"
+alias vi=$EDITOR
 
 {{ if eq .os "darwin" -}}
   #default for x86_64 architectures on mac
@@ -34,13 +24,6 @@ export VISUAL="$EDITOR"
   export INFOPATH="${HOMEBREW_PREFIX}/share/info:${INFOPATH:-}";
 {{ end -}}
 
-#more aliases here
-alias sudo='sudo '
-if command -v nvim &> /dev/null; then
-  alias vi='nvim'
-else
-  alias vi='vim'
-fi
 
 export LANG=en_US.UTF-8
 
@@ -77,16 +60,8 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 # man
 export MANPAGER='less -s -M +Gg'
 
-{{ if eq .os "darwin" -}}
-
-alias cm="chezmoi"
-
-{{ else if eq .os "linux" -}}
-
-alias cm="$HOME/bin/chezmoi"
-
-{{ end -}}
-
 #My aliases
 {{ template "aliases.sh" }}
 
+alias sudo='sudo '
+alias cm="chezmoi"
